@@ -1,9 +1,9 @@
 <?php
 session_start();
-if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
-    header('Location: dashboard.php');
-    exit;
-}
+// Limpiar cualquier sesión anterior y comenzar fresco
+session_unset();
+session_destroy();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -55,7 +55,6 @@ if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
                         header('Location: user_dashboard.php');
                         exit;
                     }
-                    echo "<div class=\"output\"><strong>Bienvenido:</strong> " . htmlspecialchars($user['username']) . ". Rol: " . htmlspecialchars($user['role']) . "</div>";
                 } else {
                     echo "<div class=\"output\">Credenciales incorrectas.</div>";
                 }

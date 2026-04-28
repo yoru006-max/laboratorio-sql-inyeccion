@@ -22,14 +22,26 @@ $username = htmlspecialchars($_SESSION['username']);
 
         <div class="card">
             <h2 class="section-title">Bienvenido, <?php echo $username; ?></h2>
-            <p class="output">Tu sesión de usuario te permite ver productos, revisar tu perfil y consultar pedidos recientes.</p>
+            <p class="output">Tu sesión de usuario te permite acceder a funciones básicas de la tienda online.</p>
         </div>
 
         <div class="card">
             <h2 class="section-title">Mi Perfil</h2>
             <p class="output"><strong>Usuario:</strong> <?php echo $username; ?></p>
+            <p class="output"><strong>Correo:</strong> <?php echo $username; ?>@tienda.com</p>
             <p class="output"><strong>Rol:</strong> Usuario común</p>
-            <p class="output">Aquí puedes consultar tu información de cuenta y tus pedidos.</p>
+            <p class="output"><strong>Pedidos realizados:</strong> 5</p>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Funciones de Usuario</h2>
+            <ul>
+                <li><strong>Buscar productos:</strong> Encuentra artículos en la tienda.</li>
+                <li><strong>Ver catálogo:</strong> Navega entre los productos disponibles.</li>
+                <li><strong>Revisar pedidos:</strong> Consulta tu historial de compras.</li>
+                <li><strong>Comentarios:</strong> Deja reseñas en productos.</li>
+                <li><strong>Carrito de compras:</strong> Guarda artículos para comprar después.</li>
+            </ul>
         </div>
 
         <div class="card">
@@ -60,7 +72,7 @@ $username = htmlspecialchars($_SESSION['username']);
             if ($products) {
                 echo '<table><tr><th>ID</th><th>Nombre</th><th>Precio</th><th>Descripción</th></tr>';
                 foreach ($products as $product) {
-                    echo '<tr><td>' . htmlspecialchars($product['id']) . '</td><td>' . htmlspecialchars($product['name']) . '</td><td>' . htmlspecialchars($product['price']) . '</td><td>' . htmlspecialchars($product['description']) . '</td></tr>';
+                    echo '<tr><td>' . htmlspecialchars($product['id']) . '</td><td>' . htmlspecialchars($product['name']) . '</td><td>$' . htmlspecialchars($product['price']) . '</td><td>' . htmlspecialchars($product['description']) . '</td></tr>';
                 }
                 echo '</table>';
             } else {
@@ -69,15 +81,6 @@ $username = htmlspecialchars($_SESSION['username']);
             echo '</div>';
         }
         ?>
-
-        <div class="card">
-            <h2 class="section-title">Funciones de usuario</h2>
-            <ul>
-                <li>Ver tu perfil básico.</li>
-                <li>Buscar productos disponibles en la tienda.</li>
-                <li>Consultar pedidos recientes.</li>
-            </ul>
-        </div>
 
         <div class="card">
             <a class="button-link" href="logout.php">Cerrar sesión</a>
